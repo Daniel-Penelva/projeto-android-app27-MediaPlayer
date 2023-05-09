@@ -92,6 +92,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Algumas configurações para qnd a nossa activity for destruída
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if(mediaPlayer != null && mediaPlayer.isPlaying()){
+            mediaPlayer.stop();
+
+            /* libera recursos de mídia que estejam executando com a Classe MediaPlayer memória. Ou seja, a
+            * música foi colocado na memória do celular, logo o release elimina todos esses recursos de memória*/
+            mediaPlayer.release();
+
+            mediaPlayer = null;
+        }
+    }
+
     // Definir um ciclo de vida para que quando o usuário saia do app a música para de tocar
     @Override
     protected void onStop() {
@@ -102,3 +118,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+
+/**
+ * IMPORTANTE!!!
+ *
+ * Tudo que precisa saber sobre AudioManager - Leia a documentação.
+ *
+ * Link: https://developer.android.com/reference/android/media/AudioManager
+ *
+ * */
