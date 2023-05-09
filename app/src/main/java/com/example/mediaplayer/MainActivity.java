@@ -78,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Para saber se a música está sendo executada - utiliza-se o método isPlaying que retorna um boolean
         if(mediaPlayer.isPlaying()){
-
             mediaPlayer.pause();
         }
     }
@@ -90,6 +89,16 @@ public class MainActivity extends AppCompatActivity {
 
             // Para reiniciar a música de novo
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ceuazul);
+        }
+    }
+
+    // Definir um ciclo de vida para que quando o usuário saia do app a música para de tocar
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if(mediaPlayer.isPlaying()){
+            mediaPlayer.pause();
         }
     }
 }
