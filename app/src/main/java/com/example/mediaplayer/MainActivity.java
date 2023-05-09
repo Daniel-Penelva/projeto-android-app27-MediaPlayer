@@ -25,4 +25,24 @@ public class MainActivity extends AppCompatActivity {
             mediaPlayer.start();
         }
     }
+
+    // Método para executar o play
+    public void pausarSom(View view){
+
+        // Para saber se a música está sendo executada - utiliza-se o método isPlaying que retorna um boolean
+        if(mediaPlayer.isPlaying()){
+
+            mediaPlayer.pause();
+        }
+    }
+
+    public void paraSom(View view){
+        if(mediaPlayer.isPlaying()){
+
+            mediaPlayer.stop();
+
+            // Para reiniciar a música de novo
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ceuazul);
+        }
+    }
 }
