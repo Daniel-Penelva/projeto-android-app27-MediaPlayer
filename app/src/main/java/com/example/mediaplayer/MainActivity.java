@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             // Vamos usar apenas esse método que correspondo qnd o usuário manipula a seekBar
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, AudioManager.FLAG_SHOW_UI);
             }
 
             @Override
